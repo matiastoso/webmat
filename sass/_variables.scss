@@ -1,0 +1,43 @@
+// colors
+$color-primary:#258a74;
+$color-secondary:#0e8dd6;
+$color-third:#9c26b9;
+
+// ----- extends -----
+.boton {
+    margin-top: 5px;
+    padding: .3rem .6rem;
+    box-shadow: 1px 1px 3px #888;
+    transition: all .5s;
+    border-radius: 4px;
+    border: none;
+    
+    a {
+        text-decoration: none;
+    }
+}
+
+// ----- maps -----
+$colores: (
+    primary:#9c26b9,
+    secondary:#0e8dd6,
+    third: #258a74,
+);
+
+$redes-sociales: (
+    ig: #d42e77,
+    fb: #4867aa,
+    wsp: #22e248,
+);
+
+$entretenimiento: (
+    tw: #9146ff,
+    amzp: #f7a61f,
+    yt: #f00,
+);
+
+// ----- mixins -----
+@mixin tamaño($ancho, $alto) {
+    width: $ancho;
+    min-height: $alto;
+}

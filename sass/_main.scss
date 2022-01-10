@@ -1,0 +1,120 @@
+// main
+.main {
+    width: 94%;
+    margin: 1.6rem auto;
+
+    &__banner {
+        width: 90%;
+        margin: .5rem auto;
+        margin-bottom: 2rem;
+        text-align: center;
+
+        // ----- obteniendo el color de un map con un map-get
+        h1 {
+            color: map-get($colores , third);
+        }
+    }
+
+    // contenido
+    .section {
+        margin-bottom: 2rem;
+
+        &__title {
+            margin-bottom: .5rem;
+            text-align: center;
+        }
+
+        // ----- each -----
+        @each $red, $color in $colores {
+            .title__#{$red} {
+                color: $color;
+            } 
+        }
+        
+        &__container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+
+            &__card {
+                @include tamaño(30%, 140px);
+                text-align: center;
+
+                i {
+                    font-size: 2.5rem;
+                }
+                
+                // each para color de los iconos leyendo map
+                @each $red-social, $color in $redes-sociales {
+                    .color-#{$red-social} {
+                        color: $color;
+                    }
+                }
+
+                 // each para color de los iconos leyendo map
+                 @each $item, $color in $entretenimiento {
+                    .color-#{$item} {
+                        color: $color;
+                    }
+                }
+                
+                p {
+                    margin-top: 5px;
+                    margin-bottom: 3px;
+                }
+
+                .btn {
+                    @extend .boton;
+                    
+                    a {
+                        color: #fff;
+                    }
+                }
+                
+                // usando un each que escanea un map para redes sociales
+                @each $red-social, $color in $redes-sociales {
+                    .btn-#{$red-social} {
+                        background: $color;
+
+                        &:hover {
+                            box-shadow: 3px 2px 5px darken($color, 20%);
+                        }
+                    }
+                }
+
+                // usando un each que escanea un map para entretenimiento
+                @each $sitio, $color in $entretenimiento {
+                    .btn-#{$sitio} {
+                        background: $color;
+
+                        &:hover {
+                            box-shadow: 3px 2px 5px darken($color, 20%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// responsive
+@media (max-width: 1000px) {
+    .main .section__container {
+        // ----- haciendo responsive con MIXINS
+        &__card {
+            @include tamaño(45%, 140px);
+            margin: 1rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .main .section__container {
+        // ----- haciendo responsive con MIXINS
+        &__card {
+            @include tamaño(90%, auto);
+            margin: 1rem;
+        }
+    }
+}
